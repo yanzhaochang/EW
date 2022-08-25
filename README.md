@@ -13,8 +13,8 @@ PyQt5，pyecharts，pandas
 # 程序运行效果
 <img width="955" alt="截图20220825164410" src="https://user-images.githubusercontent.com/60685547/186637725-32db36d0-c703-46b7-8f4b-f3bab2bde0f1.png">
 
-# Software Framework
-1) Generating basic graphics using pyecharts
-2) Using pyqt to build the basic framework of the homepage
-3) Realize interactive communication between Python and JavaScript
-4) Refresh page with timer
+# 页面操作
+1) 最上方的柱子对应电网未来的安全状况，点击柱子，下方页面会根据未来的时刻来刷新
+2) 中间为电网的页面，点击断面左侧的断面预警会刷新，点击线路则右侧的连锁故障链会刷新
+3) 整个页面每5s访问一次数据库，刷新页面
+4) 柱子红色部分越多，代表电网安全状况越差
