@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>连锁故障</title>
+            <script type="text/javascript" src="https://assets.pyecharts.org/assets/echarts.min.js"></script>
+        <script type="text/javascript" src="https://assets.pyecharts.org/assets/themes/infographic.js"></script>
+
+</head>
+<body>
+    <div id="ew_cf" class="chart-container" style="width:500px; height:600px;"></div>
+    <script>
+        var chart_ew_cf = echarts.init(
+            document.getElementById('ew_cf'), 'infographic', {renderer: 'canvas'});
+            
+            function update_ew_cf_data(data){ 
+                var obj = eval(data);          
+                let options = chart_ew_cf.getOption();    
+                let nodesOption = options.series[0]; 
+                nodesOption.data = obj;                                   
+                chart_ew_cf.setOption(options); 
+            }                               
+            
+        var option_ew_cf = {
+    "animation": true,
+    "animationThreshold": 2000,
+    "animationDuration": 1000,
+    "animationEasing": "cubicOut",
+    "animationDelay": 0,
+    "animationDurationUpdate": 300,
+    "animationEasingUpdate": "cubicOut",
+    "animationDelayUpdate": 0,
+    "series": [
+        {
+            "type": "tree",
+            "data": [
+                {
+                    "name": "\u5fb7\u5dde-\u6d4e\u5357II\u7ebf",
+                    "children": [
+                        {
+                            "name": "\u804a\u57ce-\u6d4e\u5357II\u7ebf",
+                            "children": [
+                                {
+                                    "name": "\u6dc4\u535a-\u4e1c\u8425I\u7ebf"
+                                },
+                                {
+                                    "name": "\u6dc4\u535a-\u4e1c\u8425II\u7ebf"
+                                },
+                                {
+                                    "name": "\u6dc4\u535a-\u4e1c\u8425III\u7ebf"
+                                }
+                            ]
+                        },
+                        {
+                            "name": "\u804a\u57ce-\u6d4e\u5357I\u7ebf"
+                        },
+                        {
+                            "name": "\u804a\u57ce-\u6d4e\u5357III\u7ebf"
+                        }
+                    ],
+                    "label": {
+                        "show": true,
+                        "position": "top",
+                        "color": "rgb(255, 255, 255)",
+                        "margin": 8,
+                        "fontSize": 30
+                    }
+                }
+            ],
+            "left": "20%",
+            "right": "20%",
+            "symbol": "emptyCircle",
+            "symbolSize": 14,
+            "edgeShape": "curve",
+            "edgeForkPosition": "50%",
+            "roam": false,
+            "expandAndCollapse": true,
+            "initialTreeDepth": 2,
+            "layout": "orthogonal",
+            "orient": "LR",
+            "label": {
+                "show": {
+                    "color": "rgb(255, 255, 255)",
+                    "fontSize": 30
+                },
+                "position": "top",
+                "margin": 8
+            },
+            "leaves": {
+                "label": {
+                    "show": {
+                        "color": "rgb(0, 0, 0)",
+                        "fontSize": 50
+                    },
+                    "position": "top",
+                    "margin": 8
+                }
+            },
+            "tooltip": {
+                "show": true,
+                "trigger": "item",
+                "triggerOn": "mousemove|click",
+                "axisPointer": {
+                    "type": "line"
+                },
+                "showContent": true,
+                "alwaysShowContent": false,
+                "showDelay": 0,
+                "hideDelay": 100,
+                "textStyle": {
+                    "fontSize": 25
+                },
+                "borderWidth": 0,
+                "padding": 5
+            },
+            "rippleEffect": {
+                "show": true,
+                "brushType": "stroke",
+                "scale": 2.5,
+                "period": 4
+            }
+        }
+    ],
+    "legend": [
+        {
+            "data": [],
+            "selected": {},
+            "show": true,
+            "padding": 5,
+            "itemGap": 10,
+            "itemWidth": 25,
+            "itemHeight": 14
+        }
+    ],
+    "tooltip": {
+        "show": true,
+        "trigger": "item",
+        "triggerOn": "mousemove|click",
+        "axisPointer": {
+            "type": "line"
+        },
+        "showContent": true,
+        "alwaysShowContent": false,
+        "showDelay": 0,
+        "hideDelay": 100,
+        "textStyle": {
+            "fontSize": 14
+        },
+        "borderWidth": 0,
+        "padding": 5
+    },
+    "title": [
+        {
+            "text": "\u8fde\u9501\u6545\u969c\u641c\u7d22",
+            "padding": 5,
+            "itemGap": 10,
+            "textStyle": {
+                "color": "rgb(230, 230, 230)",
+                "fontSize": 25,
+                "backgroundColor": "rgb(180, 157, 45)"
+            }
+        }
+    ]
+};
+        chart_ew_cf.setOption(option_ew_cf);
+    </script>
+</body>
+</html>

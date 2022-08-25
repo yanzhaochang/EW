@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Awesome-pyecharts</title>
+            <script type="text/javascript" src="https://assets.pyecharts.org/assets/echarts.min.js"></script>
+        <script type="text/javascript" src="https://assets.pyecharts.org/assets/themes/infographic.js"></script>
+
+    <script language="javascript" src="D:/code/ew/conf/qwebchannel.js"></script></head>
+<body>
+    <div id="ew_rank" class="chart-container" style="width:1850px; height:200px;"></div>
+    <script>
+        var chart_ew_rank = echarts.init(
+            document.getElementById('ew_rank'), 'infographic', {renderer: 'canvas'});
+            
+        chart_ew_rank.on('click', function(params){
+            window.connection.value = params.name;
+            }); 
+        document.addEventListener("DOMContentLoaded", function () {
+                new QWebChannel( qt.webChannelTransport, function(channel) {
+                    window.connection = channel.objects.connection;
+                });
+            });              
+        
+            
+            function update_ew_rank_data(data){ 
+                var obj = eval(data);
+                var level0_percent = obj[0];
+                var level1_percent = obj[1];
+                var level2_percent = obj[2];                
+                let options = chart_ew_rank.getOption();    
+                let nodesOption = options.series[0]; 
+                nodesOption.data = level0_percent;
+                let nodesOption1 = options.series[1]; 
+                nodesOption1.data = level1_percent;
+                let nodesOption2 = options.series[2]; 
+                nodesOption2.data = level2_percent;                                
+                chart_ew_rank.setOption(options); 
+            }                               
+            
+        var option_ew_rank = {
+    "animation": true,
+    "animationThreshold": 2000,
+    "animationDuration": 1000,
+    "animationEasing": "cubicOut",
+    "animationDelay": 0,
+    "animationDurationUpdate": 300,
+    "animationEasingUpdate": "cubicOut",
+    "animationDelayUpdate": 0,
+    "series": [
+        {
+            "type": "bar",
+            "name": "0",
+            "legendHoverLink": true,
+            "data": [
+                0.7434644139006378,
+                0.7787794303523378,
+                0.7905747803445153,
+                0.7165529311804285,
+                0.7995192027202891,
+                0.7997192967549341,
+                0.7197567878716321,
+                0.7267153342653867,
+                0.782343261482659,
+                0.7479090750361237,
+                0.7812199058938306,
+                0.7093915507343046,
+                0.7683818973576055,
+                0.7469017515817357,
+                0.7809425563553531,
+                0.7081140077125093,
+                0.7088383715812028,
+                0.7496856590634947,
+                0.7880333802606695,
+                0.7425159801242744,
+                0.7544034311808279,
+                0.7162071296828004,
+                0.7180079047695004,
+                0.7801912261924793
+            ],
+            "showBackground": false,
+            "stack": "stack1",
+            "barWidth": "50%",
+            "barMinHeight": 0,
+            "barCategoryGap": "20%",
+            "barGap": "30%",
+            "large": false,
+            "largeThreshold": 400,
+            "seriesLayoutBy": "column",
+            "datasetIndex": 0,
+            "clip": true,
+            "zlevel": 0,
+            "z": 2,
+            "label": {
+                "show": false,
+                "position": "top",
+                "margin": 8
+            },
+            "itemStyle": {
+                "color": "green"
+            },
+            "rippleEffect": {
+                "show": true,
+                "brushType": "stroke",
+                "scale": 2.5,
+                "period": 4
+            }
+        },
+        {
+            "type": "bar",
+            "name": "I",
+            "legendHoverLink": true,
+            "data": [
+                0.11815840029744351,
+                0.13673358438519842,
+                0.1444772951383675,
+                0.13865885234404884,
+                0.12312273935013518,
+                0.1492924716636605,
+                0.13340393119543037,
+                0.126503125408605,
+                0.11742138843226609,
+                0.11126650203834156,
+                0.1179400077045038,
+                0.111178635099571,
+                0.14882070224964364,
+                0.13793187281366331,
+                0.1470480278319866,
+                0.14237862842575333,
+                0.14860883450904938,
+                0.10902840789060747,
+                0.13251035497477512,
+                0.1076930950310979,
+                0.14857687190963317,
+                0.11291362484467,
+                0.11272692822974924,
+                0.12166463991351213
+            ],
+            "showBackground": false,
+            "stack": "stack1",
+            "barWidth": "50%",
+            "barMinHeight": 0,
+            "barCategoryGap": "20%",
+            "barGap": "30%",
+            "large": false,
+            "largeThreshold": 400,
+            "seriesLayoutBy": "column",
+            "datasetIndex": 0,
+            "clip": true,
+            "zlevel": 0,
+            "z": 2,
+            "label": {
+                "show": false,
+                "position": "top",
+                "margin": 8
+            },
+            "itemStyle": {
+                "color": "rgb(247, 237, 32)"
+            },
+            "rippleEffect": {
+                "show": true,
+                "brushType": "stroke",
+                "scale": 2.5,
+                "period": 4
+            }
+        },
+        {
+            "type": "bar",
+            "name": "II",
+            "legendHoverLink": true,
+            "data": [
+                0.1383771858019187,
+                0.08448698526246382,
+                0.06494792451711717,
+                0.14478821647552265,
+                0.07735805792957573,
+                0.05098823158140536,
+                0.14683928093293752,
+                0.1467815403260083,
+                0.10023535008507493,
+                0.14082442292553476,
+                0.10084008640166559,
+                0.1794298141661244,
+                0.08279740039275083,
+                0.11516637560460102,
+                0.07200941581266027,
+                0.14950736386173735,
+                0.14255279390974784,
+                0.14128593304589782,
+                0.07945626476455539,
+                0.14979092484462764,
+                0.09701969690953896,
+                0.17087924547252958,
+                0.1692651670007504,
+                0.0981441338940086
+            ],
+            "showBackground": false,
+            "stack": "stack1",
+            "barWidth": "50%",
+            "barMinHeight": 0,
+            "barCategoryGap": "20%",
+            "barGap": "30%",
+            "large": false,
+            "largeThreshold": 400,
+            "seriesLayoutBy": "column",
+            "datasetIndex": 0,
+            "clip": true,
+            "zlevel": 0,
+            "z": 2,
+            "label": {
+                "show": false,
+                "position": "top",
+                "margin": 8
+            },
+            "itemStyle": {
+                "color": "rgb(214, 37, 39)"
+            },
+            "rippleEffect": {
+                "show": true,
+                "brushType": "stroke",
+                "scale": 2.5,
+                "period": 4
+            }
+        }
+    ],
+    "legend": [
+        {
+            "data": [
+                "0",
+                "I",
+                "II"
+            ],
+            "selected": {
+                "0": true,
+                "I": true,
+                "II": true
+            },
+            "show": false,
+            "padding": 5,
+            "itemGap": 10,
+            "itemWidth": 25,
+            "itemHeight": 14
+        }
+    ],
+    "tooltip": {
+        "show": false,
+        "trigger": "item",
+        "triggerOn": "mousemove|click",
+        "axisPointer": {
+            "type": "line"
+        },
+        "showContent": true,
+        "alwaysShowContent": false,
+        "showDelay": 0,
+        "hideDelay": 100,
+        "textStyle": {
+            "fontSize": 14
+        },
+        "borderWidth": 0,
+        "padding": 5
+    },
+    "xAxis": [
+        {
+            "show": true,
+            "scale": false,
+            "nameLocation": "end",
+            "nameGap": 15,
+            "gridIndex": 0,
+            "inverse": false,
+            "offset": 0,
+            "splitNumber": 5,
+            "minInterval": 0,
+            "splitLine": {
+                "show": false,
+                "lineStyle": {
+                    "show": true,
+                    "width": 1,
+                    "opacity": 1,
+                    "curveness": 0,
+                    "type": "solid"
+                }
+            },
+            "data": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12,
+                13,
+                14,
+                15,
+                16,
+                17,
+                18,
+                19,
+                20,
+                21,
+                22,
+                23,
+                24
+            ]
+        }
+    ],
+    "yAxis": [
+        {
+            "show": false,
+            "scale": false,
+            "nameLocation": "end",
+            "nameGap": 15,
+            "gridIndex": 0,
+            "inverse": false,
+            "offset": 0,
+            "splitNumber": 5,
+            "minInterval": 0,
+            "splitLine": {
+                "show": false,
+                "lineStyle": {
+                    "show": true,
+                    "width": 1,
+                    "opacity": 1,
+                    "curveness": 0,
+                    "type": "solid"
+                }
+            }
+        }
+    ],
+    "title": [
+        {
+            "left": 0,
+            "top": 0,
+            "padding": 5,
+            "itemGap": 10
+        }
+    ]
+};
+        chart_ew_rank.setOption(option_ew_rank);
+    </script>
+</body>
+</html>

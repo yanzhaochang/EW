@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>山东电网</title>
+            <script type="text/javascript" src="https://assets.pyecharts.org/assets/echarts.min.js"></script>
+        <script type="text/javascript" src="https://assets.pyecharts.org/assets/maps/shandong.js"></script>
+        <script type="text/javascript" src="https://assets.pyecharts.org/assets/themes/infographic.js"></script>
+    <script language="javascript" src="D:/code/ew/conf/qwebchannel.js"></script>
+</head>
+<body>
+    <div id="ew_grid" class="chart-container" style="width:1000px; height:700px;"></div>
+    <script>
+        var chart_ew_grid = echarts.init(
+            document.getElementById('ew_grid'), 'infographic', {renderer: 'canvas'});
+            
+        chart_ew_grid.on('click', function(params){
+            if (params.seriesName){
+                var sv = {"seriesName": params.seriesName, "seriesType": params.seriesType, "name": params.name} 
+                var json_data = JSON.stringify(sv);
+                window.connection.value = json_data;
+            }
+            });
+        chart_ew_grid.on('dblclick', function(params){
+            });  
+        chart_ew_grid.on('contextmenu', function(params){
+            window.mouse_location = chart_grid.convertFromPixel('geo', [params.event.offsetX, params.event.offsetY]);  // 鼠标的经纬度坐标设为了全局变量
+            }); 
+        function clear_node(){
+            let options = chart_ew_grid.getOption();
+            var index = options.series.findIndex(element => element.name == "节点");
+            let nodesOption = options.series[index].data;        
+            while(nodesOption.length > 0) {
+                nodesOption.pop();
+            }
+            chart_ew_grid.setOption(options);
+        }    
+        function clear_line(){
+            let options = chart_ew_grid.getOption();
+            var index = options.series.findIndex(element => element.name == "线路");
+            let linesOption = options.series[index].data;        
+            while(linesOption.length > 0) {
+                linesOption.pop();
+            }            
+            chart_ew_grid.setOption(options);
+        }
+        function add_node(Node){
+            var newNode = eval(Node);
+            let options = chart_ew_grid.getOption();
+            var index = options.series.findIndex(element => element.name == "节点");
+            let nodesOption = options.series[index].data; 
+            nodesOption.push(newNode);
+            chart_ew_grid.setOption(options);                         
+        }   
+        function add_line(line){
+            var newLine = eval(line);
+            let options = chart_ew_grid.getOption(); 
+            var index = options.series.findIndex(element => element.name == "线路");   
+            let linesOption = options.series[index].data;        
+            linesOption.push(newLine);
+            chart_ew_grid.setOption(options);
+        }   
+        document.addEventListener("DOMContentLoaded", function () {
+                new QWebChannel( qt.webChannelTransport, function(channel) {
+                    window.connection = channel.objects.connection;
+                });
+            });           
+            
+        var option_ew_grid = {
+    "animation": true,
+    "animationThreshold": 2000,
+    "animationDuration": 1000,
+    "animationEasing": "cubicOut",
+    "animationDelay": 0,
+    "animationDurationUpdate": 300,
+    "animationEasingUpdate": "cubicOut",
+    "animationDelayUpdate": 0,
+    "series": [
+        {
+            "type": "scatter",
+            "name": "\u8282\u70b9",
+            "coordinateSystem": "geo",
+            "symbolSize": 20,
+            "data": [
+                {
+                    "name": "\u9c81\u90b9\u53bfG",
+                    "value": [
+                        116.952279,
+                        35.330448,
+                        2
+                    ]
+                },
+                {
+                    "name": "\u9c81\u6dc4\u5ddd",
+                    "value": [
+                        117.982036,
+                        36.644972,
+                        35
+                    ]
+                }
+            ],
+            "label": {
+                "show": true,
+                "position": "top",
+                "margin": 8,
+                "formatter": function(params) {                    if ('value' in params.data) {                        return params.data.name;                    }                }
+            },
+            "itemStyle": {
+                "color": "rgb(50, 84, 111)"
+            }
+        },
+        {
+            "type": "lines",
+            "name": "\u65ad\u9762",
+            "coordinateSystem": "geo",
+            "zlevel": 3,
+            "progressive": 400,
+            "progressiveThreshold": 3000,
+            "effect": {
+                "show": false,
+                "brushType": "stroke",
+                "scale": 2.5,
+                "period": 4,
+                "color": "yellow",
+                "symbol": "arrow",
+                "symbolSize": 6
+            },
+            "symbol": [
+                "none",
+                "arrow"
+            ],
+            "polyline": true,
+            "large": false,
+            "largeThreshold": 2000,
+            "symbolSize": 12,
+            "data": [
+                {
+                    "name": "\u6cb3\u5317\u5c71\u4e1c\u65ad\u97621->\u6cb3\u5317\u5c71\u4e1c\u65ad\u97622",
+                    "coords": [
+                        [
+                            117.286494,
+                            38.086073
+                        ],
+                        [
+                            115.620379,
+                            36.971876
+                        ]
+                    ]
+                },
+                {
+                    "name": "\u5c71\u4e1c\u534a\u5c9b\u65ad\u97621->\u5c71\u4e1c\u534a\u5c9b\u65ad\u97622",
+                    "coords": [
+                        [
+                            119.437524,
+                            37.071148
+                        ],
+                        [
+                            119.785668,
+                            35.709988
+                        ]
+                    ]
+                }
+            ],
+            "lineStyle": {
+                "show": true,
+                "width": 10,
+                "opacity": 1,
+                "curveness": 0.2,
+                "type": "solid",
+                "color": "rgb(244, 138, 10)"
+            },
+            "label": {
+                "show": true,
+                "position": "top",
+                "margin": 8
+            }
+        },
+        {
+            "type": "lines",
+            "name": "\u7ebf\u8def",
+            "coordinateSystem": "geo",
+            "zlevel": 4,
+            "progressive": 400,
+            "progressiveThreshold": 3000,
+            "effect": {
+                "show": true,
+                "brushType": "stroke",
+                "scale": 2.5,
+                "period": 4,
+                "color": "yellow",
+                "symbol": "arrow",
+                "symbolSize": 6
+            },
+            "symbol": [
+                "none",
+                "arrow"
+            ],
+            "polyline": true,
+            "large": false,
+            "largeThreshold": 2000,
+            "symbolSize": 12,
+            "data": [
+                {
+                    "name": "\u9c81\u90b9\u53bfG->\u9c81\u6dc4\u5ddd",
+                    "coords": [
+                        [
+                            116.952279,
+                            35.330448
+                        ],
+                        [
+                            117.982036,
+                            36.644972
+                        ]
+                    ]
+                }
+            ],
+            "lineStyle": {
+                "show": true,
+                "width": 3,
+                "opacity": 1,
+                "curveness": 0.2,
+                "type": "solid",
+                "color": "rgb(130, 138, 110)"
+            },
+            "label": {
+                "show": true,
+                "position": "top",
+                "margin": 8
+            }
+        }
+    ],
+    "legend": [
+        {
+            "data": [
+                "\u8282\u70b9",
+                "\u65ad\u9762",
+                "\u7ebf\u8def"
+            ],
+            "selected": {
+                "\u8282\u70b9": true,
+                "\u65ad\u9762": true,
+                "\u7ebf\u8def": true
+            },
+            "show": false,
+            "padding": 5,
+            "itemGap": 10,
+            "itemWidth": 25,
+            "itemHeight": 14
+        }
+    ],
+    "tooltip": {
+        "show": false,
+        "triggerOn": "mousemove|click",
+        "axisPointer": {
+            "type": "line"
+        },
+        "showContent": true,
+        "alwaysShowContent": false,
+        "showDelay": 0,
+        "hideDelay": 100,
+        "textStyle": {
+            "fontSize": 14
+        },
+        "borderWidth": 0,
+        "padding": 5
+    },
+    "title": [
+        {
+            "padding": 5,
+            "itemGap": 10
+        }
+    ],
+    "geo": {
+        "map": "\u5c71\u4e1c",
+        "zoom": 1.2,
+        "roam": true,
+        "aspectScale": 0.75,
+        "nameProperty": "name",
+        "selectedMode": false,
+        "emphasis": {}
+    }
+};
+        chart_ew_grid.setOption(option_ew_grid);
+    </script>
+</body>
+</html>

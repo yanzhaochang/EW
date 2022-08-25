@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Awesome-pyecharts</title>
+            <script type="text/javascript" src="https://assets.pyecharts.org/assets/echarts.min.js"></script>
+        <script type="text/javascript" src="https://assets.pyecharts.org/assets/themes/infographic.js"></script>
+
+</head>
+<body>
+    <div id="ew_frequency" class="chart-container" style="width:350px; height:300px;"></div>
+    <script>
+        var chart_ew_frequency = echarts.init(
+            document.getElementById('ew_frequency'), 'infographic', {renderer: 'canvas'});
+            
+            function update_ew_frequency_data(data){ 
+                var obj = eval(data);
+                var level0_percent = obj[0];
+                var level1_percent = obj[1];
+                var level2_percent = obj[2];                
+                let options = chart_ew_frequency.getOption();    
+                let nodesOption = options.series[0]; 
+                nodesOption.data = level0_percent;
+                let nodesOption1 = options.series[1]; 
+                nodesOption1.data = level1_percent;
+                let nodesOption2 = options.series[2]; 
+                nodesOption2.data = level2_percent;                                
+                chart_ew_frequency.setOption(options); 
+            }                              
+        
+        var option_ew_frequency = {
+    "animation": true,
+    "animationThreshold": 2000,
+    "animationDuration": 1000,
+    "animationEasing": "cubicOut",
+    "animationDelay": 0,
+    "animationDurationUpdate": 300,
+    "animationEasingUpdate": "cubicOut",
+    "animationDelayUpdate": 0,
+    "series": [
+        {
+            "type": "bar",
+            "name": "0",
+            "legendHoverLink": true,
+            "data": [
+                0.718683870757869,
+                0.7416820960424745,
+                0.7979466323381703,
+                0.7028160937892933
+            ],
+            "showBackground": false,
+            "stack": "stack1",
+            "barWidth": "50%",
+            "barMinHeight": 0,
+            "barCategoryGap": "20%",
+            "barGap": "30%",
+            "large": false,
+            "largeThreshold": 400,
+            "seriesLayoutBy": "column",
+            "datasetIndex": 0,
+            "clip": true,
+            "zlevel": 0,
+            "z": 2,
+            "label": {
+                "show": false,
+                "position": "top",
+                "margin": 8
+            },
+            "itemStyle": {
+                "color": "green"
+            },
+            "rippleEffect": {
+                "show": true,
+                "brushType": "stroke",
+                "scale": 2.5,
+                "period": 4
+            }
+        },
+        {
+            "type": "bar",
+            "name": "I",
+            "legendHoverLink": true,
+            "data": [
+                0.1445836588674292,
+                0.10758205436166027,
+                0.14046309008234587,
+                0.14597378319497317
+            ],
+            "showBackground": false,
+            "stack": "stack1",
+            "barWidth": "50%",
+            "barMinHeight": 0,
+            "barCategoryGap": "20%",
+            "barGap": "30%",
+            "large": false,
+            "largeThreshold": 400,
+            "seriesLayoutBy": "column",
+            "datasetIndex": 0,
+            "clip": true,
+            "zlevel": 0,
+            "z": 2,
+            "label": {
+                "show": false,
+                "position": "top",
+                "margin": 8
+            },
+            "itemStyle": {
+                "color": "rgb(247, 237, 32)"
+            },
+            "rippleEffect": {
+                "show": true,
+                "brushType": "stroke",
+                "scale": 2.5,
+                "period": 4
+            }
+        },
+        {
+            "type": "bar",
+            "name": "II",
+            "legendHoverLink": true,
+            "data": [
+                0.13673247037470182,
+                0.15073584959586525,
+                0.06159027757948382,
+                0.1512101230157335
+            ],
+            "showBackground": false,
+            "stack": "stack1",
+            "barWidth": "50%",
+            "barMinHeight": 0,
+            "barCategoryGap": "20%",
+            "barGap": "30%",
+            "large": false,
+            "largeThreshold": 400,
+            "seriesLayoutBy": "column",
+            "datasetIndex": 0,
+            "clip": true,
+            "zlevel": 0,
+            "z": 2,
+            "label": {
+                "show": false,
+                "position": "top",
+                "margin": 8
+            },
+            "itemStyle": {
+                "color": "rgb(214, 37, 39)"
+            },
+            "rippleEffect": {
+                "show": true,
+                "brushType": "stroke",
+                "scale": 2.5,
+                "period": 4
+            }
+        }
+    ],
+    "legend": [
+        {
+            "data": [
+                "0",
+                "I",
+                "II"
+            ],
+            "selected": {
+                "0": true,
+                "I": true,
+                "II": true
+            },
+            "show": false,
+            "padding": 5,
+            "itemGap": 10,
+            "itemWidth": 25,
+            "itemHeight": 14
+        }
+    ],
+    "tooltip": {
+        "show": false,
+        "trigger": "item",
+        "triggerOn": "mousemove|click",
+        "axisPointer": {
+            "type": "line"
+        },
+        "showContent": true,
+        "alwaysShowContent": false,
+        "showDelay": 0,
+        "hideDelay": 100,
+        "textStyle": {
+            "fontSize": 14
+        },
+        "borderWidth": 0,
+        "padding": 5
+    },
+    "xAxis": [
+        {
+            "show": false,
+            "scale": false,
+            "nameLocation": "end",
+            "nameGap": 15,
+            "gridIndex": 0,
+            "inverse": false,
+            "offset": 0,
+            "splitNumber": 5,
+            "minInterval": 0,
+            "splitLine": {
+                "show": false,
+                "lineStyle": {
+                    "show": true,
+                    "width": 1,
+                    "opacity": 1,
+                    "curveness": 0,
+                    "type": "solid"
+                }
+            }
+        }
+    ],
+    "yAxis": [
+        {
+            "show": true,
+            "scale": false,
+            "nameLocation": "end",
+            "nameGap": 15,
+            "gridIndex": 0,
+            "inverse": false,
+            "offset": 0,
+            "splitNumber": 5,
+            "minInterval": 0,
+            "splitLine": {
+                "show": false,
+                "lineStyle": {
+                    "show": true,
+                    "width": 1,
+                    "opacity": 1,
+                    "curveness": 0,
+                    "type": "solid"
+                }
+            },
+            "data": [
+                "\u9c81\u56fa",
+                "\u624e\u9752",
+                "\u94f6\u4e1c",
+                "\u9647\u4e1c"
+            ]
+        }
+    ],
+    "title": [
+        {
+            "text": "\u9891\u7387\u9884\u8b66",
+            "left": 0,
+            "top": 0,
+            "padding": 5,
+            "itemGap": 10,
+            "textStyle": {
+                "color": "rgb(230, 230, 230)",
+                "fontSize": 25,
+                "backgroundColor": "rgb(180, 157, 45)"
+            }
+        }
+    ]
+};
+        chart_ew_frequency.setOption(option_ew_frequency);
+    </script>
+</body>
+</html>

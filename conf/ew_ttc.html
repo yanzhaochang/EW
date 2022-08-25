@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Awesome-pyecharts</title>
+            <script type="text/javascript" src="https://assets.pyecharts.org/assets/echarts.min.js"></script>
+        <script type="text/javascript" src="https://assets.pyecharts.org/assets/themes/infographic.js"></script>
+
+</head>
+<body>
+    <div id="ew_ttc" class="chart-container" style="width:350px; height:300px;"></div>
+    <script>
+        var chart_ew_ttc = echarts.init(
+            document.getElementById('ew_ttc'), 'infographic', {renderer: 'canvas'});
+            
+            function update_ew_ttc_data(data){   
+                var obj = eval(data);
+                let options = chart_ew_ttc.getOption();    
+                let nodesOption = options.series[0];
+                var newData = obj.data;
+                var new_color = obj.color;
+                nodesOption.data = newData;
+                nodesOption.axisLine.color = new_color;
+
+                let titleOption = options.title[0];
+                titleOption.subtext = obj.subtext;
+                chart_ew_ttc.setOption(options); 
+            }     
+            
+        var option_ew_ttc = {
+    "animation": true,
+    "animationThreshold": 2000,
+    "animationDuration": 1000,
+    "animationEasing": "cubicOut",
+    "animationDelay": 0,
+    "animationDurationUpdate": 300,
+    "animationEasingUpdate": "cubicOut",
+    "animationDelayUpdate": 0,
+    "series": [
+        {
+            "type": "gauge",
+            "title": {
+                "show": true,
+                "offsetCenter": [
+                    -90,
+                    140
+                ],
+                "color": "rgb(230, 230, 230)",
+                "fontStyle": "normal",
+                "fontWeight": "normal",
+                "fontFamily": "sans-serif",
+                "fontSize": 20,
+                "backgroundColor": "transparent",
+                "borderColor": "transparent",
+                "borderWidth": 0,
+                "borderRadius": 0,
+                "padding": 0,
+                "shadowColor": "transparent",
+                "shadowBlur": 0,
+                "shadowOffsetX": 0,
+                "shadowOffsetY": 0
+            },
+            "detail": {
+                "show": true,
+                "backgroundColor": "transparent",
+                "borderWidth": 0,
+                "borderColor": "transparent",
+                "offsetCenter": [
+                    50,
+                    140
+                ],
+                "color": "auto",
+                "fontStyle": "normal",
+                "fontWeight": "normal",
+                "fontFamily": "sans-serif",
+                "fontSize": 20,
+                "borderRadius": 0,
+                "padding": 0,
+                "shadowColor": "transparent",
+                "shadowBlur": 0,
+                "shadowOffsetX": 0,
+                "shadowOffsetY": 0
+            },
+            "min": 12,
+            "max": 20,
+            "splitNumber": 4,
+            "radius": "85%",
+            "startAngle": 210,
+            "endAngle": -30,
+            "clockwise": true,
+            "data": [
+                {
+                    "name": "\u8ba1\u5212\u529f\u7387/GW",
+                    "value": 14.12
+                }
+            ],
+            "axisLine": {
+                "show": true,
+                "onZero": true,
+                "onZeroAxisIndex": 0,
+                "lineStyle": {
+                    "show": true,
+                    "width": 15,
+                    "opacity": 1,
+                    "curveness": 0,
+                    "type": "solid",
+                    "color": [
+                        [
+                            0.9425,
+                            "green"
+                        ],
+                        [
+                            0.9515,
+                            "rgb(247, 237, 32)"
+                        ],
+                        [
+                            1,
+                            "rgb(214, 37, 39)"
+                        ]
+                    ]
+                }
+            },
+            "pointer": {
+                "show": true,
+                "length": "80%",
+                "width": 8
+            }
+        }
+    ],
+    "legend": [
+        {
+            "data": [
+                ""
+            ],
+            "selected": {
+                "": true
+            },
+            "show": false,
+            "padding": 5,
+            "itemGap": 10,
+            "itemWidth": 25,
+            "itemHeight": 14
+        }
+    ],
+    "tooltip": {
+        "show": true,
+        "trigger": "item",
+        "triggerOn": "mousemove|click",
+        "axisPointer": {
+            "type": "line"
+        },
+        "showContent": true,
+        "alwaysShowContent": false,
+        "showDelay": 0,
+        "hideDelay": 100,
+        "textStyle": {
+            "fontSize": 14
+        },
+        "borderWidth": 0,
+        "padding": 5
+    },
+    "title": [
+        {
+            "text": "TTC\u9884\u8b66",
+            "subtext": "\u6cb3\u5317\u5c71\u4e1c\u65ad\u9762",
+            "padding": 5,
+            "itemGap": 10,
+            "textStyle": {
+                "color": "rgb(230, 230, 230)",
+                "fontSize": 25,
+                "backgroundColor": "rgb(180, 157, 45)"
+            }
+        }
+    ]
+};
+        chart_ew_ttc.setOption(option_ew_ttc);
+    </script>
+</body>
+</html>
