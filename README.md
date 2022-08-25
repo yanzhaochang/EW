@@ -18,3 +18,9 @@ PyQt5，pyecharts，pandas
 2) 中间为电网的页面，点击断面左侧的断面预警会刷新，点击线路则右侧的连锁故障链会刷新
 3) 整个页面每5s访问一次数据库，刷新页面
 4) 柱子红色部分越多，代表电网安全状况越差
+
+# 程序框架
+1) pyecharts生成初始的html图表
+2) PyQt的QWebEngineView加载显示图表
+3) runJavaScript方法将数据传入JS，刷新页面
+4) QWebChannel将JS的返回值传给python
